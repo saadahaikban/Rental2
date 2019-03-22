@@ -1,39 +1,40 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    TouchableHighlight,
+    TouchableOpacity,
     Text,
     Image,
     View
   } from 'react-native';
-import { Icon } from 'react-native-elements';
-import EditBook from './EditBook';
 
+import { Icon } from 'react-native-elements';
 
 export default class BookInfo extends Component {
-   _onEditBook = () => {
-                          let id = this.props.id;
-                          this.props.navigation.navigate('EditBook', {id: id})
-                      }
-    render() {
-        return(
-          <TouchableHighlight onPress={_onEditBook}>
-          <View style={styles.rowContainer}>
-            <Image source={{uri: this.props.thumbnail}}
-            style={styles.thumbnail}
-            resizeMode="contain" />
-            <View style={styles.rowText}>
-              <Text style={styles.title} numberOfLines={2} ellipsizeMode ={'tail'}>
-                {this.props.title}
-              </Text>
-              <Text style={styles.author} numberOfLines={1} ellipsizeMode ={'tail'}>
-                {this.props.author}
-              </Text>
-            </View>
+
+  _onDetails = () => {
+    let id = this.props.id;
+    this.props.navigation.navigate('BookDetails', {id: id})
+  }
+
+  render() {
+    return(
+      <TouchableOpacity onPress={this._onDetails}>
+        <View style={styles.rowContainer}>
+          <Image source={{uri: this.props.thumbnail}}
+          style={styles.thumbnail}
+          resizeMode="contain" />
+          <View style={styles.rowText}>
+            <Text style={styles.title} numberOfLines={2} ellipsizeMode ={'tail'}>
+              {this.props.title}
+            </Text>
+            <Text style={styles.author} numberOfLines={1} ellipsizeMode ={'tail'}>
+              {this.props.author}
+            </Text>
           </View>
-        </TouchableHighlight>
-        );
-    }
+        </View>
+      </TouchableOpacity>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -7,10 +7,16 @@ import {
 
 export default class EditBook extends Component {
   render() {
+    const{navigation} = this.props;
+    const itemId = navigation.getParam('itemId',id);
+    const title = navigation.getParam('title',title);
+
     return (
       <View style={styles.container}>
+      <Text>Book Information</Text>
         <Text style={styles.title}>
-          EditBook
+          <Text>ItemId:{JSON.stringify(itemId)}</Text>
+          <Text>Title:{JSON.stringify(title)}</Text>
         </Text>
       </View>
     );

@@ -1,17 +1,16 @@
-import {Platform, StyleSheet, Text, View} from 'react-native';
 import React, { Component } from 'react';
-import { Dimensions } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator ,createAppContainer } from 'react-navigation';
+import { Dimensions, Platform } from 'react-native';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import BookList from './screens/BookList';
+import BookList from './screens/BooklIST';
 import SearchBooks from './screens/SearchBooks';
 import Profile from './screens/Profile';
-import EditBook from './screens/EditBook';
+import BookDetails from './screens/BookDetails';
 
 let screen = Dimensions.get('window');
 
-export const Tabs = createBottomTabNavigator({
+export const Tabs = TabNavigator({
   'BookList': {
     screen: BookList,
     navigationOptions: {
@@ -26,7 +25,7 @@ export const Tabs = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="ios-map-outline" type="ionicon" size={28} color={tintColor} />
     },
   },
-  'Profile': {
+  'My Profile': {
     screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Profile',
@@ -52,10 +51,8 @@ export const BookcaseStack = StackNavigator({
   },
 });
 
-export const AppContainer = createAppContainer(Tabs);
-   
 export const createRootNavigator = () => {
-  return createStackNavigator(
+  return StackNavigator(
     {
       BookcaseStack: {
         screen: BookcaseStack,
@@ -70,7 +67,7 @@ export const createRootNavigator = () => {
         }
       }
     },
-     {
+    {
       headerMode: "none",
       mode: "modal"
     }

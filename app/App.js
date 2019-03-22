@@ -4,17 +4,21 @@ import { Dimensions } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator ,createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import BookList from './screens/BookList';
+import Book from './screens/Book';
 import SearchBooks from './screens/SearchBooks';
 import Profile from './screens/Profile';
+import BookDetails from './screens/BookDetails';
+import BookInfo from './screens/BookInfo';
+import Book from './screens/Book';
+import Details from './screens/Details';
 
 let screen = Dimensions.get('window');
 
 export const Tabs = createBottomTabNavigator({
-  'BookList': {
-    screen: BookList,
+  'Book': {
+    screen: Book,
     navigationOptions: {
-      tabBarLabel: 'BookList',
+      tabBarLabel: 'Book',
       tabBarIcon: ({ tintColor }) => <Icon name="book" type="entypo" size={28} color={tintColor} />
     },
   },
@@ -22,23 +26,50 @@ export const Tabs = createBottomTabNavigator({
     screen: SearchBooks,
     navigationOptions: {
       tabBarLabel: 'SearchBooks',
-      tabBarIcon: ({ tintColor }) => <Icon name="browser" type="ionicon" size={28} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="ios-compass" type="ionicon" size={28} color={tintColor} />
     },
   },
   'Profile': {
     screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Icon name="people" type="ionicon" size={28} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="ios-contact" type="ionicon" size={28} color={tintColor} />
     },
   },
 });
 
-export const AppContainer = createAppContainer(Tabs);
-   
+const Navigation = createStackNavigator({
+  Book:{screen:Book},
+  Details:{screens:Details}
+});
+
+//export const BookStack = createStackNavigator({
+//  Book:{
+//    screen:Book,
+//    navigationOptions:({navigation}) => ({
+//      header:null,
+//    }),
+//  },
+//    BookDetails:{
+//      screen: BookDetails,
+//      navigationOptions:({navigation}) => ({
+//        header:null,
+//        gesturesEnabled:false
+//      }),
+//    },
+//  });
+
+export const AppContainer = createAppContainer(Tabs,Navigation);
+
 export const createRootNavigator = () => {
   return createStackNavigator(
     {
+      BookStack:{
+        screen:BookStack,
+        navigationOptions:{
+          gesturesEnabled:false
+        }
+      },
       Tabs: {
         screen: Tabs,
         navigationOptions: {
@@ -46,6 +77,10 @@ export const createRootNavigator = () => {
         }
       }
     },
+    {
+      headerMode:"none",
+      mode:"modal"
+    }
   );
 };
 export default AppContainer;

@@ -4,20 +4,15 @@ import {
   StyleSheet,
   FlatList,
   Text,
-  View,
-  Header,
-
+  View
 } from 'react-native';
 
 import BookInfo from './BookInfo';
 
-export default class BookList extends Component
-{
-  constructor(props)
-  {
+export default class BookList extends Component {
+  constructor(props) {
     super(props);
-    this.state =
-    {
+    this.state = {
       books: [
         {
           id: 1,
@@ -50,12 +45,11 @@ export default class BookList extends Component
     />
   );
 
-  _keyExtractor = (item, index) => item.id;
+  _keyExtractor = (item, index) => item.toString();
 
   render() {
     return (
       <View style={styles.container}>
-
         <StatusBar
           barStyle="light-content"
         />
@@ -63,7 +57,6 @@ export default class BookList extends Component
           data={this.state.books}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
-          <Button onPress={() => this.props.navigation.navigate('BookInfo')} />
         />
       </View>
     );
