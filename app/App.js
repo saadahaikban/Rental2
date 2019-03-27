@@ -4,21 +4,19 @@ import { Dimensions } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator ,createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Book from './screens/Book';
 import SearchBooks from './screens/SearchBooks';
 import Profile from './screens/Profile';
 import BookDetails from './screens/BookDetails';
 import BookInfo from './screens/BookInfo';
-import Book from './screens/Book';
-import Details from './screens/Details';
+import BookList from './screens/BookList';
 
 let screen = Dimensions.get('window');
 
 export const Tabs = createBottomTabNavigator({
-  'Book': {
-    screen: Book,
+  'BookList': {
+    screen: BookList,
     navigationOptions: {
-      tabBarLabel: 'Book',
+      tabBarLabel: 'BookList',
       tabBarIcon: ({ tintColor }) => <Icon name="book" type="entypo" size={28} color={tintColor} />
     },
   },
@@ -38,28 +36,21 @@ export const Tabs = createBottomTabNavigator({
   },
 });
 
-const Navigation = createStackNavigator({
-  Book:{screen:Book},
-  Details:{screens:Details}
-});
-
-//export const BookStack = createStackNavigator({
-//  Book:{
-//    screen:Book,
-//    navigationOptions:({navigation}) => ({
-//      header:null,
-//    }),
-//  },
-//    BookDetails:{
-//      screen: BookDetails,
-//      navigationOptions:({navigation}) => ({
-//        header:null,
-//        gesturesEnabled:false
-//      }),
-//    },
-//  });
-
-export const AppContainer = createAppContainer(Tabs,Navigation);
+export const BookStack = createStackNavigator({
+  BookList:{
+    screen:BookList,
+    navigationOptions:({navigation}) => ({
+      header:null,
+    }),
+  },
+    BookDetails:{
+      screen: BookDetails,
+      navigationOptions:({navigation}) => ({
+        header:null,
+        gesturesEnabled:false
+      }),
+    },
+  });
 
 export const createRootNavigator = () => {
   return createStackNavigator(
@@ -83,4 +74,6 @@ export const createRootNavigator = () => {
     }
   );
 };
+export const AppContainer = createAppContainer(Tabs);
+
 export default AppContainer;
