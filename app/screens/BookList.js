@@ -26,13 +26,13 @@ export default class BookList extends Component{
         <Image style={{width:100,height:100}}
           source={{uri:item.image}} />
         <View style={styles.rowText}>
-          <Text style={styles.title}>
+          <Text style={styles.title} numberOfLines={2} ellipsizeMode ={'tail'}>
             {item.book_title}
           </Text>
-          <Text style={styles.author}>
+          <Text style={styles.author} numberOfLines={1} ellipsizeMode ={'tail'}>
             Author: {item.author}
           </Text>
-          <Text style={styles.owner}>
+          <Text style={styles.owner} numberOfLines={1} ellipsizeMode ={'tail'}>
             Owner: {item.owner}
           </Text>
         </View>
@@ -97,13 +97,13 @@ const styles = StyleSheet.create({
   author: {
     paddingLeft: 10,
     marginTop: 5,
-    fontSize: 14,
+    fontSize: 12,
     color: '#777'
   },
   owner: {
     paddingLeft: 10,
     marginTop: 5,
-    fontSize: 14,
+    fontSize: 12,
     color: '#777'
   },
   thumbnail: {
