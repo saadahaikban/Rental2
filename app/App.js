@@ -8,6 +8,8 @@ import SearchBooks from './screens/SearchBooks';
 import Profile from './screens/Profile';
 import BookDetails from './screens/BookDetails';
 import BookList from './screens/BookList';
+import RequestForm from './screens/RequestForm';
+import Hantar from './screens/Hantar';
 
 let screen = Dimensions.get('window');
 
@@ -57,6 +59,20 @@ export const AppSwitchNavigator = createSwitchNavigator({
         gesturesEnabled:false
       }),
     },
+    RequestForm:{
+      screen: RequestForm,
+      navigationOptions:({navigation}) => ({
+        header:null,
+        gesturesEnabled:false
+      }),
+    },
+    Hantar:{
+      screen:Hantar,
+      navigationOptions:({navigation}) => ({
+        header:null,
+        gesturesEnabled:false
+      })
+    }
   });
 
 export const AppContainer = createAppContainer(AppSwitchNavigator);

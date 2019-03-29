@@ -3,11 +3,13 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
-import {Container,Content,Header,Icon,Button,Left,Body,Right,Title} from 'native-base';
+import {Container,Content,Header,Button,Icon,Left,Body,Right,Title} from 'native-base';
+import RequestForm from './RequestForm';
 
-export default class EditBook extends Component {
+export default class BookDetails extends Component {
   render() {
     const{navigation} = this.props;
     const image = navigation.getParam('image',image);
@@ -33,11 +35,14 @@ export default class EditBook extends Component {
         resizeMode="contain" />
         <Text>Author:{JSON.stringify(author)}</Text>
         <Text>Owner:{JSON.stringify(owner)}</Text>
-        <Button iconLeft>
-        <Icon name='ios-book'/>
-        <Text>Rent</Text>
-        </Button>
         </Content>
+      <View style={styles.buttoncontainer}>
+       <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('RequestForm');}}>
+       <View style={styles.button}>
+         <Text style={styles.buttonText}>Request To Borrow</Text>
+       </View>
+       </TouchableOpacity>
+       </View>
       </Container>
     );
   }
@@ -60,4 +65,19 @@ const styles = StyleSheet.create({
     height: undefined,
     width: undefined
   },
+  buttoncontainer: {
+    paddingTop: 60,
+    alignItems: 'center'
+  },
+  button: {
+    alignContent:'center',
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
+  }
 });
