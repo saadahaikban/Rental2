@@ -54,7 +54,7 @@ export default class RequestForm extends Component {
       <View style={styles.buttoncontainer}>
        <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('Hantar');}}>
        <View style={styles.button}>
-         <Text style={styles.buttonText}>Request To Borrow</Text>
+         <Text style={styles.buttonText}>Submit</Text>
        </View>
        </TouchableOpacity>
        </View>
