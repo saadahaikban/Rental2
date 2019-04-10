@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import {Container,Content,Header,Button,Icon,Left,Body,Right,Title} from 'native-base';
+import BookList from './BookList';
 import RequestForm from './RequestForm';
 
 export default class BookDetails extends Component {
@@ -31,19 +32,20 @@ export default class BookDetails extends Component {
           <Right/>
         </Header>
         <Content>
-        <Image style={styles.imagestyle} source={{uri: this.props.image}} //not functioning
-        resizeMode="contain" />
-        <Text>Author:{JSON.stringify(author)}</Text>
-        <Text>Owner:{JSON.stringify(owner)}</Text>
+        <View style={{alignItems:'center', marginHorizontal:30}}>
+            <Image style={styles.productImg} source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3v7KDJN7TAoJa5sFaPWcp1HX8JFcpF3z5K3ngz4L6kWoEP7Ca"}}/>
+            <Text style={styles.name}>Title: {JSON.stringify(title)} </Text>
+            <Text style={styles.status}>Available</Text>
+            <Text style={styles.description}>Author:{JSON.stringify(author)}</Text>
+            <Text style={styles.description}>Owner:{JSON.stringify(owner)}</Text>
+            <Text style={styles.name}></Text>
+            <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]} onPress={() => {this.props.navigation.navigate('RequestForm');}}>
+              <Text style={styles.loginText}>Request To Borrow</Text>
+            </TouchableOpacity>
+        </View>
         </Content>
-      <View style={styles.buttoncontainer}>
-       <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('RequestForm');}}>
-       <View style={styles.button}>
-         <Text style={styles.buttonText}>Request To Borrow</Text>
-       </View>
-       </TouchableOpacity>
-       </View>
-      </Container>
+
+        </Container>
     );
   }
 }
@@ -55,6 +57,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  productImg:{
+    width:200,
+    height:200,
+  },
+  name:{
+    fontSize:28,
+    color:"#696969",
+    fontWeight:'bold'
+  },
+  status:{
+    marginTop:10,
+    fontSize:18,
+    color:"green",
+    fontWeight:'bold'
+  },
+  description:{
+    textAlign:'center',
+    marginTop:10,
+    color:"#696969",
+  },
   title: {
     fontSize: 20,
     textAlign: 'center',
@@ -65,19 +87,19 @@ const styles = StyleSheet.create({
     height: undefined,
     width: undefined
   },
-  buttoncontainer: {
-    paddingTop: 60,
-    alignItems: 'center'
-  },
-  button: {
-    alignContent:'center',
-    marginBottom: 30,
-    width: 260,
+  buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2196F3'
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
   },
-  buttonText: {
-    padding: 20,
-    color: 'white'
+  loginButton: {
+    backgroundColor: "#00b5ec",
+  },
+  loginText: {
+    color: 'white',
   }
 });

@@ -23,7 +23,7 @@ export default class App extends Component {
           Name :
         </Text>
         <Text style={styles.label} numberOfLines={2} ellipsizeMode ={'tail'}>
-          ID Number :
+          IC Number :
         </Text>
         <Text style={styles.label} numberOfLines={2} ellipsizeMode ={'tail'}>
           Phone Number :

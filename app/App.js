@@ -1,4 +1,4 @@
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {PlatForm, StyleSheet, Text, View} from 'react-native';
 import React, { Component } from 'react';
 import { Dimensions } from 'react-native';
 import { createSwitchNavigator, createStackNavigator, createBottomTabNavigator ,createAppContainer } from 'react-navigation';
@@ -8,8 +8,10 @@ import SearchBooks from './screens/SearchBooks';
 import Profile from './screens/Profile';
 import BookDetails from './screens/BookDetails';
 import BookList from './screens/BookList';
-import RequestForm from './screens/RequestForm';
 import Hantar from './screens/Hantar';
+import RequestForm from './screens/RequestForm';
+import Signup from './screens/Signup';
+import Signin from './screens/Signin';
 
 let screen = Dimensions.get('window');
 
@@ -46,6 +48,24 @@ const Tabs = createBottomTabNavigator({
 
 
 export const AppSwitchNavigator = createSwitchNavigator({
+  Signup:{
+    screen:Signup,
+    navigationOptions:({navigation}) => ({
+      header:null,
+    }),
+  },
+  Signin:{
+    screen:Signin,
+    navigationOptions:({navigation}) => ({
+      header:null,
+    }),
+  },
+  Profile:{
+    screen:Profile,
+    navigationOptions:({navigation}) => ({
+      header:null,
+    }),
+  },
   BookList:{
     screen:BookList,
     navigationOptions:({navigation}) => ({

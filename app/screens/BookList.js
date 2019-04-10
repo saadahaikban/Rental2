@@ -9,7 +9,11 @@ import {
   ActivityIndicator,
   TouchableOpacity
 } from 'react-native';
+import {Footer,FooterTab,Button,Icon} from 'native-base';
+
 import BookDetails from './BookDetails';
+import Profile from './Profile';
+
 
 export default class BookList extends Component{
   constructor(){
@@ -63,6 +67,18 @@ render(){
        renderItem={this.renderItem}
        keyExtractor ={(item,index)=> item}
      />
+     <Footer>
+      <FooterTab>
+        <Button vertical active onPress ={() => {this.props.navigation.navigate('BookList');}}>
+          <Icon name="ios-book" />
+          <Text>Books</Text>
+        </Button>
+        <Button vertical onPress ={() => {this.props.navigation.navigate('Profile');}}>
+          <Icon name="person" />
+          <Text>Profile</Text>
+        </Button>
+      </FooterTab>
+     </Footer>
    </View>
  );
 }

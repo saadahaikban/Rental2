@@ -51,11 +51,11 @@ export default class RequestForm extends Component {
         />
       }
       />
+
       <View style={styles.buttoncontainer}>
-       <TouchableOpacity onPress={() =>{ this.props.navigation.navigate('Hantar');}}>
-       <View style={styles.button}>
-         <Text style={styles.buttonText}>Submit</Text>
-       </View>
+      <Text style={styles.name}></Text>
+       <TouchableOpacity style={[styles.buttonContainer, styles.loginButton]} onPress={() => {this.props.navigation.navigate('Hantar');}}>
+         <Text style={styles.loginText}>Submit</Text>
        </TouchableOpacity>
        </View>
       </View>
@@ -64,6 +64,11 @@ export default class RequestForm extends Component {
 }
 
 const styles = StyleSheet.create({
+  name:{
+    fontSize:22,
+    color:"#FFFFFF",
+    fontWeight:'600',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -75,19 +80,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  buttoncontainer: {
-    paddingTop: 60,
-    alignItems: 'center'
-  },
-  button: {
-    alignContent:'center',
-    marginBottom: 30,
-    width: 260,
+  buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2196F3'
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
   },
-  buttonText: {
-    padding: 20,
-    color: 'white'
+  loginButton: {
+    backgroundColor: "#00b5ec",
+  },
+  loginText: {
+    color: 'white',
   }
 });
